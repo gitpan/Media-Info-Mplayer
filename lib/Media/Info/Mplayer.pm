@@ -15,7 +15,7 @@ our @EXPORT_OK = qw(
                        get_media_info
                );
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 our %SPEC;
 
@@ -80,7 +80,7 @@ sub get_media_info {
 }
 
 1;
-# ABSTRACT: Use Common interface for Media::Info::*
+# ABSTRACT: Return information on media file/URL using mplayer
 
 __END__
 
@@ -90,11 +90,20 @@ __END__
 
 =head1 NAME
 
-Media::Info::Mplayer - Use Common interface for Media::Info::*
+Media::Info::Mplayer - Return information on media file/URL using mplayer
 
 =head1 VERSION
 
-version 0.01
+version 0.02
+
+=head1 SYNOPSIS
+
+Use directly:
+
+ use Media::Info::Mplayer qw(get_media_info);
+ my $res = get_media_info(media => '/home/steven/celine.avi');
+
+or use via L<Media::Info>.
 
 =head1 SEE ALSO
 

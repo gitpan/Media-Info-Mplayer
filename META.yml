@@ -1,5 +1,5 @@
 ---
-abstract: 'Use Common interface for Media::Info::*'
+abstract: 'Return information on media file/URL using mplayer'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
 build_requires:
@@ -25,4 +25,4 @@ requires:
 resources:
   homepage: http://metacpan.org/release/Media-Info-Mplayer
   repository: http://github.com/sharyanto/perl-Media-Info-Mplayer
-version: 0.01
+version: 0.02

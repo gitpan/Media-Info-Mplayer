@@ -1,8 +1,17 @@
 NAME
-    Media::Info::Mplayer - Use Common interface for Media::Info::*
+    Media::Info::Mplayer - Return information on media file/URL using
+    mplayer
 
 VERSION
-    version 0.01
+    version 0.02
+
+SYNOPSIS
+    Use directly:
+
+     use Media::Info::Mplayer qw(get_media_info);
+     my $res = get_media_info(media => '/home/steven/celine.avi');
+
+    or use via Media::Info.
 
 SEE ALSO
     Media::Info
