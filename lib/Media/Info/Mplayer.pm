@@ -15,7 +15,7 @@ our @EXPORT_OK = qw(
                        get_media_info
                );
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 our %SPEC;
 
@@ -76,7 +76,7 @@ sub get_media_info {
         $info->{lc($_)} = $1 if $stdout =~ /^ID_\Q$_\E=(.+)/m;
     }
 
-    [200, "OK", $info, {raw_output=>$stdout}];
+    [200, "OK", $info, {"func.raw_output"=>$stdout}];
 }
 
 1;
@@ -94,7 +94,7 @@ Media::Info::Mplayer - Return information on media file/URL using mplayer
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -105,29 +105,30 @@ Use directly:
 
 or use via L<Media::Info>.
 
-=head1 SEE ALSO
+Sample result:
 
-L<Media::Info>
-
-=head1 AUTHOR
-
-Steven Haryanto <stevenharyanto@gmail.com>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2013 by Steven Haryanto.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
-
-=head1 DESCRIPTION
+ [
+   200,
+   "OK",
+   {
+     audio_bitrate => 128000,
+     audio_format  => 85,
+     audio_rate    => 44100,
+     duration      => 2081.25,
+     num_channels  => 2,
+     num_chapters  => 0,
+   },
+   {
+     "func.raw_output" => "ID_AUDIO_ID=0\n...",
+   },
+ ]
 
 =head1 FUNCTIONS
 
 
-None are exported by default, but they are exportable.
-
 =head2 get_media_info(%args) -> [status, msg, result, meta]
+
+Return information on media file/URL.
 
 Arguments ('*' denotes required arguments):
 
@@ -142,5 +143,37 @@ Media file/URL.
 Return value:
 
 Returns an enveloped result (an array). First element (status) is an integer containing HTTP status code (200 means OK, 4xx caller error, 5xx function error). Second element (msg) is a string containing error message, or 'OK' if status is 200. Third element (result) is optional, the actual result. Fourth element (meta) is called result metadata and is optional, a hash that contains extra information.
+
+=head1 SEE ALSO
+
+L<Media::Info>
+
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/Media-Info-Mplayer>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-Media-Info-Mplayer>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+http://rt.cpan.org/Public/Dist/Display.html?Name=Media-Info-Mplayer
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+=head1 AUTHOR
+
+Steven Haryanto <stevenharyanto@gmail.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2013 by Steven Haryanto.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
